@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17633a">
+
+<title>MedID Uruguay - Marcos Paredes</title>
+
+<style>
+
+:root{
+    --verde:#17633a;
+    --verde2:#0f4d2c;
+    --azul:#16466d;
+    --azul2:#0c3858;
+    --fondo:#f4f7f5;
+    --texto:#18231d;
+    --gris:#68756e;
+    --borde:#dce5df;
+    --blanco:#ffffff;
+    --rojo:#a33127;
+    --amarillo:#fff5d9;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:var(--fondo);
+    color:var(--texto);
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+/* HEADER */
+
+header{
+    height:70px;
+    background:white;
+    border-bottom:1px solid var(--borde);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 6%;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    color:var(--verde);
+    font-size:20px;
+    font-weight:bold;
+}
+
+.logo-icon{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    background:var(--verde);
+    color:white;
+    display:grid;
+    place-items:center;
+    font-size:22px;
+}
+
+.badge{
+    font-size:12px;
+    background:#edf2ef;
+    color:var(--gris);
+    padding:7px 12px;
+    border-radius:20px;
+}
+
+/* GENERAL */
+
+main{
+    max-width:1050px;
+    margin:auto;
+    padding:30px 18px 60px;
+}
+
+.pantalla{
+    display:none;
+}
+
+.pantalla.activa{
+    display:block;
+}
+
+/* INICIO */
+
+.inicio{
+    text-align:center;
+    padding:45px 0;
+}
+
+.icono-med{
+    font-size:62px;
+}
+
+.inicio h1{
+    font-size:clamp(34px,6vw,54px);
+    margin:12px 0 5px;
+}
+
+.nombre{
+    color:var(--verde);
+    font-size:24px;
+    font-weight:bold;
+}
+
+.inicio p{
+    max-width:680px;
+    margin:12px auto;
+    color:var(--gris);
+    line-height:1.6;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+    margin-top:30px;
+}
+
+.card{
+    background:white;
+    border:1px solid var(--borde);
+    border-radius:18px;
+    padding:22px;
+    box-shadow:0 8px 25px rgba(20,50,35,.06);
+}
+
+.opcion{
+    cursor:pointer;
+    min-height:215px;
+    transition:.2s;
+}
+
+.opcion:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 35px rgba(20,50,35,.10);
+}
+
+.publico{
+    border-top:5px solid var(--verde);
+}
+
+.privado{
+    border-top:5px solid var(--azul);
+}
+
+.icono{
+    font-size:35px;
+    margin-bottom:12px;
+}
+
+.opcion h2{
+    margin:5px 0 8px;
+}
+
+.opcion p{
+    color:var(--gris);
+    line-height:1.5;
+}
+
+.btn{
+    border:0;
+    border-radius:10px;
+    padding:13px 18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.verde{
+    background:var(--verde);
+    color:white;
+}
+
+.azul{
+    background:var(--azul);
+    color:white;
+}
+
+.secundario{
+    background:white;
+    border:1px solid var(--borde);
+}
+
+/* PAGINAS */
+
+.volver{
+    color:var(--verde);
+    font-weight:bold;
+    cursor:pointer;
+    margin-bottom:10px;
+}
+
+.subtitulo{
+    color:var(--gris);
+    line-height:1.5;
+}
+
+.alerta{
+    padding:15px;
+    border-radius:12px;
+    margin:17px 0;
+    line-height:1.55;
+}
+
+.seguro{
+    background:#edf8f0;
+    color:var(--verde2);
+}
+
+.restringido{
+    background:#eef4fa;
+    color:var(--azul2);
+}
+
+.urgente{
+    background:#fff1ef;
+    color:var(--rojo);
+    border-left:5px solid var(--rojo);
+}
+
+.aviso{
+    background:var(--amarillo);
+    color:#765b14;
+}
+
+/* PERFIL */
+
+.perfil{
+    display:grid;
+    grid-template-columns:170px 1fr;
+    gap:20px;
+    align-items:center;
+}
+
+.avatar{
+    height:170px;
+    border-radius:18px;
+    background:#e4efe7;
+    display:grid;
+    place-items:center;
+    font-size:85px;
+}
+
+.datos{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.dato{
+    background:#f7f9f7;
+    padding:14px;
+    border-radius:11px;
+}
+
+.etiqueta{
+    display:block;
+    color:var(--gris);
+    font-size:11px;
+    text-transform:uppercase;
+    font-weight:bold;
+    margin-bottom:5px;
+}
+
+.valor{
+    font-weight:bold;
+}
+
+/* LOGIN */
+
+.login{
+    max-width:450px;
+    margin:50px auto;
+}
+
+.candado{
+    text-align:center;
+    font-size:50px;
+}
+
+.login h1{
+    text-align:center;
+}
+
+.login p{
+    text-align:center;
+    color:var(--gris);
+}
+
+input{
+    width:100%;
+    padding:13px;
+    border:1px solid #cdd8d1;
+    border-radius:10px;
+    margin:7px 0 14px;
+    font-size:15px;
+}
+
+/* TABLAS */
+
+.titulo-seccion{
+    margin:27px 0 10px;
+    color:var(--azul);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    border:1px solid var(--borde);
+    border-radius:12px;
+    overflow:hidden;
+}
+
+td{
+    padding:12px;
+    border-bottom:1px solid var(--borde);
+    font-size:14px;
+}
+
+td:first-child{
+    font-weight:bold;
+    width:42%;
+    color:#405048;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    color:#7b8780;
+    font-size:12px;
+    padding:0 18px 25px;
+}
+
+/* CELULAR */
+
+@media(max-width:700px){
+
+    .grid,
+    .datos{
+        grid-template-columns:1fr;
+    }
+
+    .perfil{
+        grid-template-columns:1fr;
+    }
+
+    .avatar{
+        height:130px;
+    }
+
+    .badge{
+        display:none;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<div class="logo">
+
+<div class="logo-icon">
+🩺
+</div>
+
+MedID Uruguay
+
+</div>
+
+<div class="badge">
+Prototipo educativo · Datos ficticios
+</div>
+
+</header>
+
+
+<main>
+
+
+<!-- =====================================================
+     PANTALLA DE INICIO
+===================================================== -->
+
+<section id="inicio" class="pantalla activa">
+
+<div class="inicio">
+
+<div class="icono-med">
+🩺
+</div>
+
+<h1>
+MedID Uruguay
+</h1>
+
+<div class="nombre">
+Perfil de Marcos Paredes
+</div>
+
+<p>
+
+Sistema de identificación mediante tecnología NFC
+para facilitar el acceso a información útil ante
+una situación de emergencia.
+
+</p>
+
+
+<div class="grid">
+
+
+<!-- PUBLICO -->
+
+<div
+class="card opcion publico"
+onclick="mostrar('publico')"
+>
+
+<div class="icono">
+🟢
+</div>
+
+<h2>
+Uso público
+</h2>
+
+<p>
+
+Información básica que puede consultar
+cualquier persona para ayudar a identificar
+a Marcos y actuar ante una emergencia.
+
+</p>
+
+<button class="btn verde">
+Ver datos básicos →
+</button>
+
+</div>
+
+
+<!-- PRIVADO -->
+
+<div
+class="card opcion privado"
+onclick="mostrar('login')"
+>
+
+<div class="icono">
+🔐
+</div>
+
+<h2>
+Uso privado
+</h2>
+
+<p>
+
+Información médica destinada exclusivamente
+a profesionales autorizados.
+
+</p>
+
+<button class="btn azul">
+Acceso médico →
+</button>
+
+</div>
+
+
+</div>
+
+
+<p style="margin-top:28px;font-size:13px">
+
+📡 Esta información puede abrirse mediante
+la pulsera NFC asociada a Marcos.
+
+</p>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     USO PUBLICO
+===================================================== -->
+
+<section id="publico" class="pantalla">
+
+<div
+class="volver"
+onclick="mostrar('inicio')"
+>
+← Volver
+</div>
+
+<h1>
+Información básica
+</h1>
+
+<p class="subtitulo">
+
+Información destinada a ayudar a identificar
+a la persona en caso de emergencia.
+
+</p>
+
+
+<div class="alerta seguro">
+
+<strong>✓ Información pública</strong>
+
+<br>
+
+Estos datos pueden ser consultados
+por cualquier persona que encuentre
+la pulsera.
+
+</div>
+
+
+<!-- PERFIL -->
+
+<div class="card perfil">
+
+<div class="avatar">
+👤
+</div>
+
+
+<div>
+
+<span class="etiqueta">
+Nombre
+</span>
+
+<div class="valor">
+Marcos Paredes
+</div>
+
+<br>
+
+<span class="etiqueta">
+Edad
+</span>
+
+<div class="valor">
+29 años
+</div>
+
+<br>
+
+<span class="etiqueta">
+Identificación de pulsera
+</span>
+
+<div class="valor">
+MED-UR-0247
+</div>
+
+</div>
+
+</div>
+
+
+<!-- DATOS -->
+
+<div class="card" style="margin-top:18px">
+
+<div class="datos">
+
+
+<div class="dato">
+
+<span class="etiqueta">
+Grupo sanguíneo
+</span>
+
+<div class="valor">
+O positivo (O+)
+</div>
+
+</div>
+
+
+<div class="dato">
+
+<span class="etiqueta">
+Contacto de emergencia
+</span>
+
+<div class="valor">
+Ana Paredes
+</div>
+
+</div>
+
+
+<div class="dato">
+
+<span class="etiqueta">
+Teléfono de emergencia
+</span>
+
+<div class="valor">
++598 99 000 000
+</div>
+
+</div>
+
+
+<div class="dato">
+
+<span class="etiqueta">
+Idioma
+</span>
+
+<div class="valor">
+Español
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- EMERGENCIA -->
+
+<div class="alerta urgente">
+
+<strong>🚨 IMPORTANTE</strong>
+
+<br><br>
+
+Marcos puede presentar episodios de
+mareo o desmayo relacionados con
+alteraciones de la presión arterial.
+
+<br><br>
+
+Si se desmaya, verificá que esté respirando
+normalmente y buscá ayuda. Si no hay una
+lesión que lo impida, acostalo boca arriba
+y elevá suavemente sus piernas.
+
+<br><br>
+
+Si no recupera la conciencia con normalidad,
+tiene dificultad para respirar, se lastimó
+al caer o la situación parece grave,
+llamá a los servicios de emergencia.
+
+</div>
+
+
+<div class="alerta aviso">
+
+<strong>⚠️ Pulsera extraviada</strong>
+
+<br>
+
+Si encontraste esta pulsera, por favor
+comunicate con el contacto de emergencia
+para poder devolverla a su propietario.
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     LOGIN
+===================================================== -->
+
+<section id="login" class="pantalla">
+
+<div class="login card">
+
+<div class="candado">
+🔐
+</div>
+
+<h1>
+Acceso privado
+</h1>
+
+<p>
+
+Área destinada a profesionales autorizados.
+
+</p>
+
+
+<label>
+Usuario
+</label>
+
+<input
+id="usuario"
+placeholder="Usuario"
+>
+
+
+<label>
+Contraseña
+</label>
+
+<input
+id="password"
+type="password"
+placeholder="Contraseña"
+>
+
+
+<div
+id="error"
+class="alerta urgente"
+style="display:none"
+>
+
+Usuario o contraseña incorrectos.
+
+</div>
+
+
+<button
+class="btn azul"
+style="width:100%"
+onclick="iniciarSesion()"
+>
+
+Ingresar
+
+</button>
+
+
+<br><br>
+
+
+<button
+class="btn secundario"
+style="width:100%"
+onclick="mostrar('inicio')"
+>
+
+Volver
+
+</button>
+
+
+<p style="font-size:12px;margin-top:18px">
+
+DEMO<br>
+
+Usuario:
+<strong>medico.demo</strong>
+
+<br>
+
+Contraseña:
+<strong>MedID-2026</strong>
+
+</p>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     INFORMACION PRIVADA
+===================================================== -->
+
+<section id="privado" class="pantalla">
+
+<div
+class="volver"
+onclick="cerrarSesion()"
+>
+← Cerrar sesión
+</div>
+
+<h1>
+Ficha médica de Marcos Paredes
+</h1>
+
+<p class="subtitulo">
+
+Información privada para profesionales autorizados.
+
+</p>
+
+
+<div class="alerta restringido">
+
+<strong>🔒 INFORMACIÓN MÉDICA RESTRINGIDA</strong>
+
+<br>
+
+Esta sección contiene datos ficticios
+para demostración del proyecto.
+
+</div>
+
+
+
+<!-- IDENTIFICACION -->
+
+<h2 class="titulo-seccion">
+👤 Identificación
+</h2>
+
+<table>
+
+<tr>
+<td>Nombre completo</td>
+<td>Marcos Paredes</td>
+</tr>
+
+<tr>
+<td>Edad</td>
+<td>29 años</td>
+</tr>
+
+<tr>
+<td>Identificación de pulsera</td>
+<td>MED-UR-0247</td>
+</tr>
+
+<tr>
+<td>Grupo sanguíneo</td>
+<td>O positivo (O+)</td>
+</tr>
+
+</table>
+
+
+
+<!-- CONDICION -->
+
+<h2 class="titulo-seccion">
+🩺 Antecedentes relevantes
+</h2>
+
+<table>
+
+<tr>
+<td>Antecedente principal</td>
+<td>Alteraciones de presión arterial</td>
+</tr>
+
+<tr>
+<td>Episodios registrados</td>
+<td>Desmayos asociados a episodios de presión baja</td>
+</tr>
+
+<tr>
+<td>Antecedentes cardiovasculares</td>
+<td>No registrados en esta demo</td>
+</tr>
+
+<tr>
+<td>Alergias</td>
+<td>No registradas</td>
+</tr>
+
+<tr>
+<td>Observaciones</td>
+<td>Control médico periódico recomendado</td>
+</tr>
+
+</table>
+
+
+
+<!-- PROTOCOLO DESMAYO -->
+
+<h2 class="titulo-seccion">
+🚨 Actuación ante un desmayo
+</h2>
+
+
+<div class="alerta urgente">
+
+<strong>
+Si Marcos pierde el conocimiento:
+</strong>
+
+<br><br>
+
+1. Comprobar que el lugar sea seguro.
+
+<br><br>
+
+2. Comprobar si responde y si respira
+normalmente.
+
+<br><br>
+
+3. Si respira normalmente y no existe una
+lesión que lo impida, mantenerlo acostado
+boca arriba y elevar suavemente las piernas.
+
+<br><br>
+
+4. Aflojar ropa que pueda dificultar
+la respiración.
+
+<br><br>
+
+5. No darle alimentos, bebidas ni medicamentos
+mientras esté inconsciente.
+
+<br><br>
+
+6. Solicitar asistencia de emergencia si
+no recupera la conciencia con normalidad,
+si presenta dificultad respiratoria,
+convulsiones, una lesión importante o
+cualquier otro signo de gravedad.
+
+</div>
+
+
+
+<!-- PRESION -->
+
+<h2 class="titulo-seccion">
+🩸 Control de presión arterial
+</h2>
+
+<table>
+
+<tr>
+<td>Condición registrada</td>
+<td>Tendencia a episodios de presión arterial baja</td>
+</tr>
+
+<tr>
+<td>Último control</td>
+<td>118 / 76 mmHg</td>
+</tr>
+
+<tr>
+<td>Control anterior</td>
+<td>104 / 68 mmHg</td>
+</tr>
+
+<tr>
+<td>Frecuencia de control</td>
+<td>Según indicación profesional</td>
+</tr>
+
+</table>
+
+
+
+<!-- MEDICACION -->
+
+<h2 class="titulo-seccion">
+💊 Medicación
+</h2>
+
+<table>
+
+<tr>
+<td>Medicamentos actuales</td>
+<td>No registrados en esta demostración</td>
+</tr>
+
+<tr>
+<td>Observación</td>
+<td>No administrar medicación sin indicación profesional</td>
+</tr>
+
+</table>
+
+
+
+<!-- ALERGIAS -->
+
+<h2 class="titulo-seccion">
+⚠️ Alergias y advertencias
+</h2>
+
+<table>
+
+<tr>
+<td>Alergias medicamentosas</td>
+<td>No registradas</td>
+</tr>
+
+<tr>
+<td>Alergias alimentarias</td>
+<td>No registradas</td>
+</tr>
+
+<tr>
+<td>Advertencia especial</td>
+<td>Ante un desmayo, priorizar evaluación y seguridad del paciente</td>
+</tr>
+
+</table>
+
+
+
+<!-- CONTACTO -->
+
+<h2 class="titulo-seccion">
+📞 Contactos
+</h2>
+
+<table>
+
+<tr>
+<td>Contacto de emergencia</td>
+<td>Ana Paredes</td>
+</tr>
+
+<tr>
+<td>Teléfono</td>
+<td>+598 99 000 000</td>
+</tr>
+
+<tr>
+<td>Relación</td>
+<td>Familiar</td>
+</tr>
+
+</table>
+
+
+
+<div class="card" style="margin-top:22px">
+
+<strong>
+🔐 Registro de acceso
+</strong>
+
+<p style="color:#68756e">
+
+Usuario:
+<span id="usuarioRegistro">
+medico.demo
+</span>
+
+<br>
+
+Fecha y hora:
+<span id="hora">
+--
+</span>
+
+</p>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+MedID Uruguay · Prototipo educativo ·
+Datos personales y médicos ficticios.
+
+</footer>
+
+
+
+<script>
+
+
+/* =========================================
+   CAMBIO DE PANTALLAS
+========================================= */
+
+function mostrar(id){
+
+document
+.querySelectorAll(".pantalla")
+.forEach(function(pantalla){
+
+pantalla.classList.remove("activa");
+
+});
+
+document
+.getElementById(id)
+.classList.add("activa");
+
+window.scrollTo(0,0);
+
+}
+
+
+
+/* =========================================
+   ACCESO PRIVADO
+========================================= */
+
+function iniciarSesion(){
+
+const usuario =
+document.getElementById("usuario").value.trim();
+
+const password =
+document.getElementById("password").value;
+
+
+if(
+usuario === "medico.demo" &&
+password === "MedID-2026"
+){
+
+document
+.getElementById("error")
+.style.display="none";
+
+
+document
+.getElementById("usuarioRegistro")
+.textContent=usuario;
+
+
+document
+.getElementById("hora")
+.textContent=
+new Date().toLocaleString("es-UY");
+
+
+mostrar("privado");
+
+}
+
+else{
+
+document
+.getElementById("error")
+.style.display="block";
+
+}
+
+}
+
+
+
+/* =========================================
+   CERRAR SESION
+========================================= */
+
+function cerrarSesion(){
+
+document
+.getElementById("usuario")
+.value="";
+
+document
+.getElementById("password")
+.value="";
+
+mostrar("inicio");
+
+}
+
+</script>
+
+
+</body>
+</html>
